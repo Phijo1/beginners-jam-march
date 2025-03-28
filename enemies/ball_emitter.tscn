@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsephtrutgqse"]
+[gd_scene load_steps=4 format=3 uid="uid://bsephtrutgqse"]
 
 [ext_resource type="Script" uid="uid://cdxtv4ymqg8xx" path="res://enemies/ball_emitter.gd" id="1_yr0qk"]
+[ext_resource type="Texture2D" uid="uid://cscywc6i205ta" path="res://icon.svg" id="2_ur3wx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2syo"]
+radius = 76.99
 
 [node name="BallEmitter" type="Node2D"]
 script = ExtResource("1_yr0qk")
@@ -9,4 +13,13 @@ script = ExtResource("1_yr0qk")
 wait_time = 3.0
 autostart = true
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ur3wx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h2syo")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
