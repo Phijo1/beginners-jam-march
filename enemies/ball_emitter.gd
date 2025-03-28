@@ -1,6 +1,7 @@
 extends Node2D
 
 var ball_object = preload("res://enemies/ball.tscn")
+@export var killable = true
 
 func _ready() -> void:
 	pass
@@ -16,5 +17,5 @@ func _on_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("rebound"):
-		if body.rebounding == true:
+		if (body.rebounding == true) and killable:
 			queue_free()
