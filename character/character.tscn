@@ -37,3 +37,4 @@ shape = SubResource("RectangleShape2D_hx151")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="body_entered" from="Shield_Pivot/Shield_Area2D" to="Shield_Pivot/Shield_Area2D" method="_on_body_entered"]
+[connection signal="bullet_jump" from="Shield_Pivot/Shield_Area2D" to="." method="_on_shield_area_2d_bullet_jump"]

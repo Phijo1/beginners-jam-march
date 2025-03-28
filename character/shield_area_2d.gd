@@ -2,6 +2,7 @@ extends Area2D
 
 var mouse_pos: Vector2
 var angle_to: float
+signal bullet_jump
 
 @onready var shield_pivot := %Shield_Pivot
 
@@ -22,6 +23,8 @@ func _on_body_entered(body: Node2D) -> void:
 			body.rebound(shield_pivot.rotation)
 		else:
 			body.rebound_other()
+		if body.global_position.y > (shield_pivot.global_position.y + 64):
+			bullet_jump.emit()
 
 
 func shield_area():
