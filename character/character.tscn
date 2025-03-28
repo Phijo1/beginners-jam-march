@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0oxb7wqm8k81"]
+
+[ext_resource type="Script" uid="uid://dx8j600glpck" path="res://character/character.gd" id="1_1l1n4"]
+[ext_resource type="Texture2D" uid="uid://cscywc6i205ta" path="res://icon.svg" id="2_ugqs2"]
+[ext_resource type="Script" uid="uid://bbqtd86166e4t" path="res://character/shield_area_2d.gd" id="3_ugqs2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx151"]
+radius = 64.0
+height = 130.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx151"]
+size = Vector2(100, 20)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_1l1n4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ugqs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hx151")
+
+[node name="Shield_Pivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Shield_Area2D" type="Area2D" parent="Shield_Pivot"]
+position = Vector2(0, -97)
+script = ExtResource("3_ugqs2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield_Pivot/Shield_Area2D"]
+scale = Vector2(0.765625, 0.15625)
+texture = ExtResource("2_ugqs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_Pivot/Shield_Area2D"]
+shape = SubResource("RectangleShape2D_hx151")
+
+[connection signal="body_entered" from="Shield_Pivot/Shield_Area2D" to="Shield_Pivot/Shield_Area2D" method="_on_body_entered"]
