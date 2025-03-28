@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	mouse_pos = get_viewport().get_mouse_position()
+	mouse_pos = shield_pivot.get_global_mouse_position()
 	angle_to = rad_to_deg(mouse_pos.angle_to_point(shield_pivot.global_position)) - 90
 	shield_pivot.rotation = deg_to_rad(angle_to)
 

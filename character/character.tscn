@@ -34,4 +34,6 @@ texture = ExtResource("2_ugqs2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield_Pivot/Shield_Area2D"]
 shape = SubResource("RectangleShape2D_hx151")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="body_entered" from="Shield_Pivot/Shield_Area2D" to="Shield_Pivot/Shield_Area2D" method="_on_body_entered"]

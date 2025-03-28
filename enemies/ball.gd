@@ -24,7 +24,7 @@ func rebound(angle: float):
 	print(direction)
 
 func rebound_other():
-	var mouse_pos = get_viewport().get_mouse_position()
+	var mouse_pos = self.get_global_mouse_position()
 	var angle_to = rad_to_deg(mouse_pos.angle_to_point(global_position)) - 180
 	direction = Vector2.from_angle(deg_to_rad(angle_to))
 	velocity = direction * speed
